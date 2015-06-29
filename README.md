@@ -15,7 +15,7 @@ diHMM is independent of operating systems because it is written in Matlab. Basic
 Usage
 -----
 
-Unzip the package. Change the current directory in Matlab to the 'diHMM' folder containing the code organized into subfolders. In order to run the programs, 'diHMM' and its sudirectories have to be added to the path. This can be achieved with the folowing command at the Matlab prompt
+Unzip the package. Change the current directory in Matlab to the 'diHMM' folder containing the code organized into subfolders. In order to run the programs, 'diHMM' and its sudirectories have to be added to the path. This can be achieved with the following command at the Matlab prompt
 
 ```
 >> addpath(genpath(pwd))
@@ -32,14 +32,14 @@ To train a model use the function
 By default, the model trained has 30 nucleosome-level states and 30 domain-level states. To reduce the training time a smaller number of states can be given as an input to the function. 
 
 
-For example: To train the model with 20 nucleosome-level states and 10 donain-level states use the command.
+For example: To train the model with 20 nucleosome-level states and 10 domain-level states use the command.
 
 ```
 >> runDiHMMTrain({'GM12878', 'H1hesc', 'K562'}, 'hg19', 20, 10, 'modelGHKChr17',  1)
 ```
 See the file runDiHMMTrain.m in 'main' for a description of the input parameters. After training the model, the model and bed files to visualize the states in a genome browser are saved in the 'results' folder, subfolder 'modelGHKChr17', and the model parameters are displayed.
 
-Nuclesome and domain states can be labeled with different functional categories, eg, Promoter, Weak Enhancer, Super-Enhancers, etc. To see available categories use the commands
+Nucleosome and domain states can be labeled with different functional categories, eg, Promoter, Weak Enhancer, Super-Enhancers, etc. To see available categories use the commands
 
 ```
 >> plotDomainAnnotations
@@ -64,5 +64,5 @@ Basic model statistics like state coverage, domain enrichments into nucleosome-l
 >> calculateBasicModelStatistics({'GM12878', 'H1hesc', 'K562'}, 20, 10, 'modelGHKChr17', 1)
 ```
 
-Figures are save in the 'figures' folder in 'results'.
+Figures are saved in the 'figures' folder in 'results'.
 
