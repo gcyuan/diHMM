@@ -88,11 +88,19 @@ nchalf = 4;
 imagesc(log10(allDomainSizes), [-nchalf 0]);
 cmBlues8 = cbrewer('seq', 'Blues',2*nchalf);
 colormap(cmBlues8)
-HT = text(1:nCT, nD*1.16*ones(1,3),...
-    {cellTypes{2}, cellTypes{1}, cellTypes{3}},...
+
+if nD > 5
+    yF = 1.08;
+    yP =  -12/nD;
+else
+    yF = 1.2;
+    yP = 0.2;
+end
+HT = text(1:nCT, nD*yF*ones(1,nCT),...
+    cellTypes,...
     'HorizontalAlignment','right','fontsize',18,'rotation',90,...
     'interpreter','none');
-text(nCT/2.5,   .4, 'Coverage',...
+text(nCT/2.5,  yP, 'Coverage',...
     'HorizontalAlignment','left','fontsize',18,'rotation',00,...
     'interpreter','none');
 
@@ -106,7 +114,7 @@ set(ax(1),'yticklabel',[], 'xticklabel', []) %Remove tick labels
 set(HA,'ytick',[],'xtick',[])
 % Get tick mark positions
 yTicks = get(ax(1),'ytick');
-xPos = 4.3936;
+xPos = 1.6*nCT;
 yPos = (0:(2*nchalf))/(2*nchalf)*nD+0.5128;
 % Reset the ytick labels in desired font
 niceLabels = {'10^{0}', ' ', '10^{-1}', ' ', '10^{-2}', ' ', '10^{-3}', ' ', '10^{-4}', ' ', '10^{-5}', ' ', '10^{-6}'};
@@ -143,12 +151,18 @@ nchalf = 4;
 imagesc(log10(allBinSizes), [-nchalf 0]);
 cmBlues8 = cbrewer('seq', 'Blues',2*nchalf);
 colormap(cmBlues8)
-    
-HT = text(1:nCT, nB*1.16*ones(1,3),...
+if nB > 5
+    yF = 1.08;
+    yP =  -6/nB;
+else
+    yF = 1.2;
+    yP = 0.2;
+end    
+HT = text(1:nCT, nB*yF*ones(1,nCT),...
     cellTypes,...
     'HorizontalAlignment','right','fontsize',18,'rotation',90,...
     'interpreter','none');
-text(0.8383,   -0.6302, 'Coverage',...
+text(nCT/2.5,  yP, 'Coverage',...
     'HorizontalAlignment','left','fontsize',18,'rotation',00,...
     'interpreter','none');
 
@@ -162,7 +176,7 @@ set(ax(1),'yticklabel',[], 'xticklabel', []) %Remove tick labels
 set(HA,'ytick',[],'xtick',[])
 % Get tick mark positions
 yTicks = get(ax(1),'ytick');
-xPos = 4.3936;
+xPos = 1.6*nCT;
 yPos = (0:(2*nchalf))/(2*nchalf)*nB+0.5128;
 % Reset the ytick labels in desired font
 niceLabels = {'10^{0}', ' ', '10^{-1}', ' ', '10^{-2}', ' ', '10^{-3}', ' ', '10^{-4}', ' ', '10^{-5}', ' ', '10^{-6}'};
@@ -273,19 +287,13 @@ export_fig(filenameeps)
 %%
 % Nice emissions
 
-%%
-if strcmp(projectName,'modelGHKChr17Final');
-    reordering = [7, 6, 5, 8, 2, 4, 9, 1, 3];
-else
-    reordering = 1:length(modelFinal.markNames);
-end
 % cmBlues = cbrewer('seq', 'Blues',10);
 cmPurples = cbrewer('seq', 'Purples',10);
 
 H1 = figure('position',[477    58   660   754],'Color', 'w');
 % axes('pos',[0.2500    0.0378    0.4949    0.8690]) % long
 axes('pos',[0.2500    0.1631    0.65    0.7437])
-imagesc(modelFinal.emissions(:,reordering), [0 1]);
+imagesc(modelFinal.emissions, [0 1]);
 nMarks = length(modelFinal.markNames);
 % text(3.5, -1,'Emissions','fontsize',18)
 set(gca,'ytick',1:nB,'Xtick',1:nMarks)
@@ -294,7 +302,7 @@ b=get(gca,'YTick');
 set(gca, 'xtick', [],'xticklabel', [])
 %     set(gca,'xtick',1:nAnnotations)
 %make new tick labels
-HT =     text(c,repmat(b(end)*1.04,1,nMarks),modelFinal.markNames(reordering)',...
+HT =     text(c,repmat(b(end)*1.06,1,nMarks),modelFinal.markNames',...
     'HorizontalAlignment','right','fontsize',14,'rotation',90,...
     'interpreter','none');
 set(gca,'yticklabel',[],'xticklabel',[])
@@ -303,6 +311,7 @@ colormap(cmPurples)
 set(gca,'ytick',[],'Xtick',[])
 freezeColors
 HCB = colorbar;
+set(gca,'fontsize',18)
 cbfreeze(HCB)
 title('Nucleosome-level emissions')
 plotStateLabels(modelFinal,'vertical', 1:nB, binLabels, 'bin')
@@ -339,7 +348,15 @@ for indexCT = 1:nCT
     b=get(gca,'YTick');
     set(gca, 'xtick', 1:nMarks,'xticklabel', [])
     %make new tick labels
-    HT =     text(c,repmat(b(end)*1.14,1,nMarks),modelFinal.markNames',...
+    if nD > 5
+        yF = 1.08;
+        yP =  -12/nD;
+    else
+        yF = 1.2;
+        yP = 0.2;
+    end
+    %     HT =     text(c,repmat(b(end)*1.04,1,nMarks),modelFinal.markNames',...
+    HT =     text(c,nD*yF*ones(1,nMarks),modelFinal.markNames',...
         'HorizontalAlignment','right','fontsize',14,'rotation',90,...
         'interpreter','none');
     set(gca,'yticklabel',domainLabels,'xticklabel',[])
@@ -348,6 +365,7 @@ for indexCT = 1:nCT
     set(gca,'fontsize',18)
     freezeColors
     HCB = colorbar;
+    set(gca,'fontsize',18)
     cbfreeze(HCB)
     title(['Mark Composition for each Domain in ' cellTypes{indexCT}],'interpreter','none');
     
