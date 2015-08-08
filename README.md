@@ -64,5 +64,5 @@ Basic model statistics like state coverage, domain enrichments into nucleosome-l
 >> calculateBasicModelStatistics({'GM12878', 'H1hesc', 'K562'}, 20, 10, 'modelGHKChr17', 1)
 ```
 
-Figures are saved in the 'figures' folder in 'results'.
+Figures are saved in the 'figures' folder in 'results'. Exporting the figures in eps uses the export_fig package. The package requires the installation of ghostscript and xpdf. See details in http://www.mathworks.com/matlabcentral/fileexchange/23629-export-fig
 
