@@ -3,28 +3,16 @@ function saveBedFiles(baseName, model)
 %
 % Author: Eugenio Marco
 
-
 [pathstr, ~, ~] = fileparts(baseName);
 
 sepLocs = strfind(pathstr, filesep);
 cellType = pathstr((sepLocs(end)+1):end);
-
-% filenameBinLevelStates = [baseName  '_binLevelStates.bed'];
-
-% filenameDomainLevelStates = [baseName  '_domainLevelStates.bed'];
 
 filenameBinLevelStatesColor = [baseName  '_binLevelStatesColor.bed'];
 
 filenameDomainLevelStatesColor = [baseName  '_domainLevelStatesColor.bed'];
 
 filenameMaxPosterior = [baseName  '_posterior.bedgraph'];
-
-
-% saveFile(filenameBinLevelStates, model, cellType, 'binLevel')
-% 
-% if size(model.transitionD,1)>1
-%     saveFile(filenameDomainLevelStates, model, cellType, 'domainLevel')
-% end
 
 saveFile(filenameBinLevelStatesColor, model, cellType, 'binLevel', 'color')
 

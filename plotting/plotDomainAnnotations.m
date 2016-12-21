@@ -22,7 +22,6 @@ set(gcf,'pos',[520   378   441   420])
 axes
 imagesc((1:nAnnotations)',[1 nAnnotations])
 set(gca,'yticklabel',1:nAnnotations,'xticklabel',[],'ytick',1:nAnnotations)
-% set(gca,'pos',[0.1300    0.1100    0.0575    0.8150])
 colormap(annotationsColor)
 doLabels(annotationLabels)
 set(gca,'yticklabel',[],'xticklabel',[], 'ytick',[], 'xtick', [])

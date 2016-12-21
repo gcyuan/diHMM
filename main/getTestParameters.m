@@ -49,11 +49,7 @@ param.nD = nD; % Number of domains
 param.nDSize = 20; % Minimum domain size, as number of bins.
 param.nB = nB; % Number of binLevel states
 
-% param.initialModel = 'random';
-% param.initialModel = 'kmeans';
-% param.initialModel = 'hierarchical';
 param.initialModel = 'kcenter';
-
 
 param.useRandomizeInitialSeed = 1;
 param.randomizeInitialSeed = sum(100*clock);

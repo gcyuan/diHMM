@@ -17,7 +17,6 @@ domainAnnotation(4).name = 'Poised Enhancers';
 domainAnnotation(4).color = [215, 137, 105];
 
 domainAnnotation(5).name = 'Super-Enhancers';
-% domainAnnotation(4).color = [215, 137, 105];
 domainAnnotation(5).color = [253, 199, 72];
 
 domainAnnotation(6).name = 'Upstream Enhancers';

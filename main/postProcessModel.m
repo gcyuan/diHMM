@@ -14,26 +14,16 @@ modelIn.logTransitionB = log(modelIn.transitionB);
 
 modelOut = modelIn;
 
-
 % We store in dec format all emission probabilities
 logEmissionsBin2dec = zeros(param.nB, 2^nM);
 for index = 1:2^nM
     
-    %OLD
-%     % First column is equal to dec 0
-%     binvec = fliplr(dec2bin(index-1,nM));
-%     % From dec2binvec
-%     % Convert the binary string, '1011', to a binvec, [1 1 0 1].
-%     binvec = logical(str2num([fliplr(binvec);blanks(length(binvec))]')');
-
-    %NEW
     % First column is equal to dec 0
     binvec = dec2bin(index-1,nM);
     % From dec2binvec
     % Convert the binary string, '1011', to a binvec, [1 1 0 1].
     binvec = logical(str2num([binvec;blanks(length(binvec))]')');
         
-
     intermediateLogEmissions = modelIn.logEmissions.*[...
         binvec(ones(nB,1),:), ~binvec(ones(nB,1),:)];
     % We eliminate the NaNs resulting from -Inf * 0

@@ -1,4 +1,4 @@
-function results = domHMMDecode(data, modelIn, param, chromosome)
+function results = diHMMDecode(data, modelIn, param, chromosome)
 % Calculates a results structure containing the scaled forward and backward
 % variables, scaling factors, posterior probabilities and loglikelihood for domHMM
 
@@ -76,16 +76,6 @@ for indexBinPosition = nBinPosition-1:-1:1
                 reshape(tB(indexB,:,:),nB,nD).*...
                 reshape(em(:,bin2decData(indexBinPosition+1)+1,ones(1,nD)),nB,nD),1)')';
         end
-        
-        %         for indexD=1:nD
-        %             for indexB=1:nB
-        %                 intermediateBackwardScaled(indexB,indexD) = ...
-        %                     sum(sum(backwardScaled(:, :, indexBinPosition+1).*...
-        %                     reshape(em(:,bin2decData(indexBinPosition)+1,ones(1,nD)),nB,nD).*...
-        %                     reshape(tB(indexB,:,:),nB,nD).*...
-        %                     tD(indexD*ones(nB,1),:)));
-        %             end
-        %         end
     end
     backwardScaled(:, :, indexBinPosition) = ...
         intermediateBackwardScaled/scale(indexBinPosition+1); % SHIFT!!!

@@ -44,25 +44,8 @@ end
 
 annotationsColor = reshape([allAnnotations.color],3,length(allAnnotations))'/255;
 
-% nB = modelIn.param.nB;
-% nD = modelIn.param.nD;
-
-% stateLabels = cell(nB,1);
-% for index = 1:nB
-%     stateLabels{index} = ['N' num2str(index)];
-% end
-% 
-% 
-% domainLabels = cell(nD,1);
-% for index = 1:nD
-%     domainLabels{index} = ['D' num2str(index)];
-% end
-
 
 %%
-
-% figure
-% set(gcf,'pos',[520   165   560   633])
 axes
 switch orientation
     case 'vertical'

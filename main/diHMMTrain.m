@@ -24,23 +24,11 @@ submodel(maxIter+1) = [];
 runBaseName = getRunBaseName(param.projectName,cellTypes, param.runNumber, nB, nD);
 checkBasename(runBaseName)
 
-
-% em = initialModel.emissionsBin2dec;
-
-% tDExpanded = kron(tD, ones(nB));
-% tDIntraDomain = kron(diag(ones(nD,1)), ones(nB));
-
-% tBExpanded = repmat(reshape(tB,nB,nB*nD),nD,1);
-
 estimatedTB = zeros(size(tB));
 estimatedTD = zeros(size(tD));
 estimatedEmissions = zeros(size(initialModel.emissions));
 
 % INDEX ORDER: BinState, Domain, BinPosition
-% forwardScaled = zeros(nB,nD,nBinPosition);
-% backwardScaled = zeros(nB,nD,nBinPosition);
-% scale = zeros(1,nBinPosition);
-
 
 converged = false;
 logLik = 1;
@@ -53,18 +41,6 @@ nChr = length(chrList);
 % logLikCTChr = zeros(nCellTypes,nChr,1);
 
 for iteration = 1:maxIter
-    %     numberTransitionsTB = zeros(size(estimatedTB));
-    %     numberTransitionsTD = zeros(size(estimatedTD));
-%     if nD==1
-%         % We need an extra singleton
-%         numberTransitionsTBCTChr = zeros([size(estimatedTB),1,nCellTypes,nChr]);
-%     else
-%         numberTransitionsTBCTChr = zeros([size(estimatedTB),nCellTypes,nChr]);
-%     end
-%     numberTransitionsTDCTChr = zeros([size(estimatedTD),nCellTypes,nChr]);
-%     numberEmissionsCTChr = zeros([size(estimatedEmissions),nCellTypes,nChr]);
-%     expectedBinStatesCTChr = zeros(nB,nCellTypes,nChr);
-%     estimatedInitialProbabilitiesCTChr = zeros(nB,nD,nCellTypes,nChr);
     
     % We linearize the indices for CT and Chr, to run it fully parallel
     if nD==1
@@ -166,16 +142,8 @@ for iteration = 1:maxIter
     
         
     if (abs(logLik-oldLL)/(1+abs(oldLL))) < tol
-        % We keep this in case we want to implement it
-        %         if norm(guessTR - oldGuessTR,inf)/numStates < trtol
-        %             if norm(guessE - oldGuessE,inf)/numEmissions < etol
-        %                 if verbose
-        %                     fprintf('%s\n',getString(message('stats:hmmtrain:ConvergedAfterIterations',iteration)))
-        %                 end
         converged = true;
         break
-        %             end
-        %         end
     end
     
     if iteration > 1

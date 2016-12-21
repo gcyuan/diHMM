@@ -23,7 +23,6 @@ H1= clustergram(model.emissions,'Colormap',cm...
     ,'ColumnLabels',markNames...
     ,'Standardize','none'...
     ,'Symmetric', 0);
-%     ,'DisplayRange', [0 1]...
 adjustPlot
 addTitle(H1,'Emissions');
 
@@ -32,7 +31,6 @@ H12 = HeatMap(model.emissions,'Colormap',cm...
     ,'Symmetric', 0 ...
     ,'ColumnLabels', markNames ...
     ,'RowLabels', 1:param.nB);
-%     adjustPlot
 addTitle(H12,'Emissions');
 
 if size(model.transitionD,1)>1
@@ -42,7 +40,6 @@ if size(model.transitionD,1)>1
             ,'Symmetric', 0 ...
             ,'ColumnLabels', 1:param.nB ...
             ,'RowLabels', param.nB:-1:1);
-        %     adjustPlot
         addTitle(H2,['Nucleosome-Level Transitions in Domain ' num2str(index)]);
     end
 else
@@ -86,14 +83,3 @@ cffighnd = cffighnd(1);
 set(cffighnd,'position', [613 64 474 702])
 end
 
-
-%  set(0,'ShowHiddenHandles','on')
-
-%  figureHandle = gcf;
-
-%# make all text in the figure to size 20 and bold
-%  set(findall(figureHandle,'type','text'),'fontSize',20,'fontWeight','bold')
-
-%# make all text in the figure to size 20
-%  set(findall(gcf,'type','text'),'fontSize',20)
-%  set(gcf,'Renderer', 'painters')

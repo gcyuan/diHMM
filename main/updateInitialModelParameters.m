@@ -70,9 +70,6 @@ for indexB =1:param.nB
                 sum(states);
             countEmissionsBinStates = countEmissionsBinStates + ...
                 sum(data.(cellTypes{index}).(chrList{index2}).binData(states,:),1);
-            
-            %             modelOut.emissions(indexB,:) = ...
-            %                 mean(data.(chrList{index}).binData(modelIn.states.(chrList{index}).binStates==indexB,:));
         end
     end
     modelOut.emissions(indexB,:) = countEmissionsBinStates / countNBinStates;
@@ -84,43 +81,6 @@ modelOut.binSize = param.binSize;
 modelOut.nDSize = param.nDSize;
 
 
-% logOneMinusEmissions = log(1-modelOut.emissions+eps); % + eps to avoid Inf, probably unnecesary
-% logEmissions = log(modelOut.emissions+eps);
-
-% We prefill the combination matrix with NaNs and fill it as necessary
-% For a given dimension element 1 is emission 0, element 2 is emission 1
-% combinationsBinStateEmissions = nan([repmat(2,1,param.nMarks) param.nB]);
-% for index = 1:length(chrList)
-%     nBins = size(data.(chrList{index}).binData,1);
-%     logEmissionsBin.(chrList{index}) = zeros(param.nB,nBins);
-%     for index2 = 1:nBins
-%         indsObs = num2cell(data.(chrList{index}).binData(index2,:)+1);
-%         indsObsFirstState = [indsObs {1}];
-%         indsObsAllStates = [indsObs {1:param.nB}];
-%         
-%         %     value = squeeze(combinationsBinEmissions(inds{:}))
-%         if isnan(combinationsBinStateEmissions(indsObsFirstState{:}))
-%             % OK, 1st time we access that element, we calculate it
-%             observation = data.(chrList{index}).binData(index2,:);
-%             combinationsBinStateEmissions(indsObsAllStates{:}) =...
-%                 getlogObsEmission(observation, logEmissions, logOneMinusEmissions);
-%         end
-%         logEmissionsBin.(chrList{index})(:,index2) = ...
-%             squeeze(combinationsBinStateEmissions(indsObsAllStates{:}));
-%     end
-% end
-% 
-% modelOut.logEmissionsBin.(chrList{index}) = logEmissionsBin.(chrList{index});
-% 
-
-% 
-% 
-% function logObsEmission = getlogObsEmission(observation, logEmissions, logOneMinusEmissions)
-% % Helper function to calculate the log of the probability of emmitting an
-% % observation, given an emission matrix
-% % Useful because there are a finite number of observations: 2^nMarks
-% logObsEmission = sum(logEmissions.*repmat(observation == 1,size(logEmissions,1),1) +...
-%     logOneMinusEmissions.*repmat(observation == 0,size(logEmissions,1),1),2);
 
 
 function nTransitions = getNTransitions(listStates,state1,state2)
