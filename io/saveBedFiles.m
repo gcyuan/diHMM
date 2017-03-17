@@ -106,11 +106,19 @@ for index = 1:length(chrList)
         case 'binLevel'
             upperStateLocations = [upperBinLocations(indexTransitions) upperBinLocations(end)]';
             bottomStateLocations = [0 upperStateLocations(1:end-1)']';
-            stateNames = [states(transitions); states(indexTransitions(end)+1)];
+            if ~isempty(indexTransitions)
+                stateNames = [states(transitions); states(indexTransitions(end)+1)];
+            else
+                stateNames = states(1); % Added to handle the case with no transitions
+            end
          case 'domainLevel' % We trim domains
             upperStateLocations = [upperBinLocations(indexTransitions) upperBinLocations(end)]'-trimLength;
             bottomStateLocations = [0 (upperStateLocations(1:end-1)'++trimLength)]'+trimLength;
-            stateNames = [states(transitions); states(indexTransitions(end)+1)];
+            if ~isempty(indexTransitions)
+                stateNames = [states(transitions); states(indexTransitions(end)+1)];
+            else
+                stateNames = states(1); % Added to handle the case with no transitions
+            end
     end
     
     for index2 = 1:length(upperStateLocations)

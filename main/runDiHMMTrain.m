@@ -139,7 +139,6 @@ save([runBaseName '.mat'], 'modelFinal')
 % save bed files
 for index = 1:length(cellTypes)
     bedFileBaseName = getResultsFileBaseName(projectName, 'bedFiles', cellTypes{index}, runNumber, nB, nD);
-%     bedFileBaseName = getBedFileBaseName(projectName, cellTypes{index}, runNumber, nB, nD);
     checkBasename(bedFileBaseName)
     saveBedFiles(bedFileBaseName, modelFinal)
 end
