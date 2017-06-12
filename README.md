@@ -4,7 +4,7 @@ diHMM v0.1 beta
 Overview
 --------
 
-diHMM stands for Hierarchical Hidden Markov Model. diHMM is a novel computational method for finding chromatin states at multiple scales. The model takes as input a multidimensional set of histone modifications for several cell types and classifies the genome into a preselected number of nucleosome-level and domain-level hidden states. The work is done by Eugenio Marco, Wouter Meuleman, Luca Pinello, Manolis Kellis and Guo-Cheng Yuan.
+diHMM stands for Hierarchical Hidden Markov Model. diHMM is a novel computational method for finding chromatin states at multiple scales. The model takes as input a multidimensional set of histone modifications for several cell types and classifies the genome into a preselected number of nucleosome-level and domain-level hidden states. The work is done by Eugenio Marco, Wouter Meuleman, Jialiang Huang, Luca Pinello, Manolis Kellis and Guo-Cheng Yuan.
 
 Systems Requirements
 --------------------
