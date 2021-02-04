@@ -1,6 +1,8 @@
 diHMM v0.1 beta
 ===============
 
+This is an old version of diHMM. Please check our our newer and faster version at this URL: https://github.com/gcyuan/diHMM-python.  
+
 Overview
 --------
 
