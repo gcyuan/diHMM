@@ -1,7 +1,8 @@
 diHMM (MATLAB version)
 ======================
 
-## Important Note: This version of diHMM is no long maintained. We are currently developing a Python/C++ version which is much faster can be freely installed on any computer. 
+## Important Note: 
+This version of diHMM is no long maintained. We are currently developing a Python/C++ version which is much faster can be freely installed on any computer. 
 
 Overview
 --------
