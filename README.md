@@ -1,7 +1,7 @@
-diHMM v0.1 beta
-===============
+diHMM (MATLAB version)
+======================
 
-This is an old version of diHMM. Please check our our newer and faster version at this URL: https://github.com/gcyuan/diHMM-python.  
+## Important Note: This version of diHMM is no long maintained. We are currently developing a Python/C++ version which is much faster can be freely installed on any computer. 
 
 Overview
 --------
