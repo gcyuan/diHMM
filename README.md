@@ -2,12 +2,17 @@ diHMM (MATLAB version)
 ======================
 
 ## Important Note: 
-This version of diHMM is no long maintained. We are currently developing a Python/C++ version which is much faster can be freely installed on any computer. 
+This repository contains the MATLAB code in the original paper (Marco et al. 2017, Nat Comm). Due to the computational inefficiency of MATLAB, we have since reimplemented the model in Python/C++. The newer version can be found at gcyuan/diHMM_Python_CPP. As a result, this repository is no longer maintained. 
 
 Overview
 --------
 
 diHMM stands for Hierarchical Hidden Markov Model. diHMM is a novel computational method for finding chromatin states at multiple scales. The model takes as input a multidimensional set of histone modifications for several cell types and classifies the genome into a preselected number of nucleosome-level and domain-level hidden states. The development of the method was led by Eugenio Marco, with assistance from Wouter Meuleman, Jialiang Huang, Luca Pinello, Manolis Kellis and Guo-Cheng Yuan.
+
+Reference
+---------
+Marco E*, Meuleman W*, Huang J*, Glass K, Pinello L, Wang J, Kellis M†, Yuan GC†. Multi-scale chromatin state annotation using a hierarchical hidden Markov model. Nature Commun. 2017 Apr 7;8:15011
+
 
 Systems Requirements
 --------------------
