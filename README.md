@@ -2,7 +2,7 @@ diHMM (MATLAB version)
 ======================
 
 ## Important Note: 
-This repository contains the MATLAB code in the original paper (Marco et al. 2017, Nat Comm). Due to the computational inefficiency of MATLAB, we have since reimplemented the model in Python/C++. The newer version can be found at gcyuan/diHMM_Python_CPP. As a result, this repository is no longer maintained. 
+This repository contains the MATLAB code in the original paper (Marco et al. 2017, Nat Comm). Due to the computational inefficiency of MATLAB, we have since reimplemented the model in Python/C++. The newer version can be found at gcyuan/diHMM-cpp. As a result, this repository is no longer maintained. 
 
 Overview
 --------
